@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0c79e8f07da00cb4d97ae3952b8bd9e0
+timeCreated: 1522433466
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - MoonPrefab: {fileID: 153800, guid: 890b7df9bdc7bb6488b414cce67cca36, type: 2}
+  - scorevalue_Noc: {instanceID: 0}
+  - scorevalue_Gal: {instanceID: 0}
+  - scorevalue_Obe: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

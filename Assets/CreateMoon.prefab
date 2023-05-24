@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &185810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22427184}
+  - component: {fileID: 11436560}
+  m_Layer: 5
+  m_Name: CreateMoon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &11436560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c79e8f07da00cb4d97ae3952b8bd9e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoonPrefab: {fileID: 153800, guid: 890b7df9bdc7bb6488b414cce67cca36, type: 2}
+  MoonSprites:
+  - {fileID: 21300000, guid: 4f6e0070256b5a44ead1537ae3a1f6f5, type: 3}
+  - {fileID: 21300000, guid: cce0c05dde6265749b89b4a6a554877d, type: 3}
+  - {fileID: 21300000, guid: 325f7ce94529d8f4c922964903835d38, type: 3}
+  - {fileID: 21300000, guid: 53ea58cc3a5d671458db58b076d3d209, type: 3}
+  scorevalue_Noc: {fileID: 0}
+  scorevalue_Gal: {fileID: 0}
+  scorevalue_Obe: {fileID: 0}
+--- !u!224 &22427184
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9859375, y: 0.9859375, z: 0.9859375}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 320.00003, y: 69.03171}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 185810}
+  m_IsPrefabAsset: 1
