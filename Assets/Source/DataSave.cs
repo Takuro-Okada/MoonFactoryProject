@@ -2,18 +2,16 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 
 [ExecuteInEditMode]
 public class DataSave : MonoBehaviour {
 
-	public Text Value_Noc;
-	public Text Value_Gal;
-	public Text Value_Obe;
-	public Text Value_Faily;
-	public Text Value_Behimos;
-	public Text Value_Dragon;
-	public Text Value_AutoMachine;
-	public Text Value_Crystal;
+	public Text[] SaveMoonValue;
+
+	public GameObject[] SaveBuyItem;
+
+	public AutoCreateMoon autoMoon;
 
 	private bool started = false;
 	private string key;
@@ -24,14 +22,8 @@ public class DataSave : MonoBehaviour {
 	public class SaveData
 	{
 
-		public string Stoc_Noc;
-		public string Stoc_Gal;
-		public string Stoc_Obe;
-		public string Buy_Faily;
-		public string Buy_Behimos;
-		public string Buy_Dragon;
-		public string Buy_AutoMachine;
-		public string Buy_Crystal;
+		public List<string> saveMoonValue;
+		public List<string> saveBuyItem;
 
 	}
 
@@ -42,7 +34,6 @@ public class DataSave : MonoBehaviour {
 		if (!File.Exists(FilePath))
 		{
 			File.Create(FilePath);
-			Save();
 			return;
 		}
 
@@ -67,16 +58,28 @@ public class DataSave : MonoBehaviour {
     {
 		SaveData save = new SaveData();
 
-		save.Stoc_Noc = Value_Noc.text;
-		save.Stoc_Gal = Value_Gal.text;
-		save.Stoc_Obe = Value_Obe.text;
+		save.saveMoonValue = new List<string>();
+		foreach (Text val in SaveMoonValue)
+        {
+			Debug.Log(val.text);
+			save.saveMoonValue.Add(val.text);
+        }
 
-		save.Buy_Faily = Value_Faily.text;
-		save.Buy_Behimos = Value_Behimos.text;
-		save.Buy_Dragon = Value_Dragon.text;
-		save.Buy_AutoMachine = Value_AutoMachine.text;
-		save.Buy_Crystal = Value_Crystal.text;
+		save.saveBuyItem = new List<string>();
+		foreach (var item in SaveBuyItem)
+        {
+			save.saveBuyItem.Add(item.GetComponent<Text>().text);
+        }
 
+		string json = JsonUtility.ToJson(save);
+		StreamWriter stream = new StreamWriter(FilePath);
+		stream.Write(json); stream.Flush();
+		stream.Close();
+	}
+
+	void InitialzeSave()
+    {
+		SaveData save = new SaveData();
 
 		string json = JsonUtility.ToJson(save);
 		StreamWriter stream = new StreamWriter(FilePath);
@@ -91,18 +94,30 @@ public class DataSave : MonoBehaviour {
 		StreamReader stream = new StreamReader(FilePath);
 		string data = stream.ReadToEnd();
 		stream.Close();
-
+		
 		save = JsonUtility.FromJson<SaveData>(data);
-		Value_Noc.text = save.Stoc_Noc;
-		Value_Gal.text = save.Stoc_Gal;
-		Value_Obe.text = save.Stoc_Obe;
 
-		Value_Faily.text = save.Buy_Faily;
-		Value_Behimos.text = save.Buy_Behimos;
-		Value_Dragon.text = save.Buy_Dragon;
-		Value_AutoMachine.text = save.Buy_AutoMachine;
-		Value_Crystal.text = save.Buy_Crystal;
+		short count = 0;
+		foreach(string val in save.saveMoonValue)
+        {
+			SaveMoonValue[count].text = val;
 
-		Debug.Log(Value_Noc);
+			count++;
+        }
+
+		count = 0;
+
+		foreach(string item in save.saveBuyItem)
+        {
+			SaveBuyItem[count].GetComponent<Text>().text = item;
+
+			int addValue = SaveBuyItem[count].GetComponentInParent<GetItem>().AddMoon * int.Parse(item);
+			Debug.Log(addValue);
+
+			autoMoon.AddValue(addValue);
+
+			count++;
+        }
+
 	}
 }

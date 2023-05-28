@@ -11,7 +11,6 @@ public class SpawnMoon : MonoBehaviour {
 
 	public void Create()
 	{
-
 		Vector2 pos = new Vector2(-938.0f, 110.0f);
 		GameObject ball = Instantiate(MoonPrefab, pos, Quaternion.AngleAxis(Random.Range(-40, 40), Vector3.forward)) as GameObject;
 		ball.transform.localScale *= Random.Range (10.0f, 25.0f);
