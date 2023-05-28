@@ -21,13 +21,8 @@ public class ClickMoon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (ClickFlg == true) {
-			if (Input.GetMouseButtonDown (0)) {
 				MoonPrefab.GetComponent<SpawnMoon> ().Create ();
-			}
-
-			if (Input.GetMouseButtonUp (0)) {
 				ClickFlg = false;
-			}
 
 		}
 	}
