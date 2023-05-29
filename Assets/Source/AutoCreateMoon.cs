@@ -23,11 +23,24 @@ public class AutoCreateMoon : MonoBehaviour {
 		}
 
 		TimeEnable += Time.deltaTime;
+		if(TimeEnable>=1.0f)
+        {
+			for (int i = 0; i < Add_Value; i++)
+			{
+				CreateMoonPrefab.GetComponent<SpawnMoon>().Create();
+			}
+			TimeEnable = 0.0f;
+		}
+
+		//フレーム間にAdd_Value分処理を行う処理
+		//個数が150を超えた辺りでAdd_Valueの分生成されなくなってしまうので封印
+		/*
 		if (TimeEnable >= 1.0f/Add_Value) 
 		{
 			CreateMoonPrefab.GetComponent<SpawnMoon> ().Create ();
 			TimeEnable = 0.0f;
 		}
+		*/
 	
 	}
 
