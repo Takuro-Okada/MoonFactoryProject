@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class AutoCreateMoon : MonoBehaviour {
 	public GameObject CreateMoonPrefab;
 	public Text SecondsValue;
-	private int Add_Value;
+	public int Add_Value { private set; get; }
 	private float TimeEnable;
 	// Use this for initialization
 	void Start () {
