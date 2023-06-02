@@ -8,13 +8,18 @@ public class ClickMoon : MonoBehaviour {
 
 	public bool ClickFlg=false;
 
+	AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
+		audioSource = GetComponent<AudioSource>();
 	
 	}
 
 	public void OnClickFlg()
 	{
+
+		audioSource.Play();
 		ClickFlg = true;
 	}
 	
