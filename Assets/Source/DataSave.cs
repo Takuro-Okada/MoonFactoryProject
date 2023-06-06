@@ -4,6 +4,8 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using System;
+using System.Text;
+using System.Security.Cryptography;
 
 [ExecuteInEditMode]
 public class DataSave : MonoBehaviour {
@@ -13,9 +15,6 @@ public class DataSave : MonoBehaviour {
 	public GameObject[] SaveBuyItem;
 
 	public AutoCreateMoon autoMoon;
-
-	private bool started = false;
-	private string key;
 
 	private string FilePath;
 
@@ -46,13 +45,10 @@ public class DataSave : MonoBehaviour {
 
 	void OnDestroy(){
 		
-		if (started) {
 			Save();
-		}
 	}
 
 	void Update(){
-		started = Application.isPlaying;
 
 	}
 
@@ -76,20 +72,28 @@ public class DataSave : MonoBehaviour {
 		save.saveTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
 		string json = JsonUtility.ToJson(save);
-		StreamWriter stream = new StreamWriter(FilePath);
-		stream.Write(json); stream.Flush();
-		stream.Close();
 
-	}
+		byte[] bytes = Encoding.UTF8.GetBytes(json);
+		byte[] aes = AesEncrypt(bytes);
 
-	void InitialzeSave()
-    {
-		SaveData save = new SaveData();
+		FileStream fStream = new FileStream(FilePath, FileMode.Create, FileAccess.Write);
 
-		string json = JsonUtility.ToJson(save);
-		StreamWriter stream = new StreamWriter(FilePath);
-		stream.Write(json); stream.Flush();
-		stream.Close();
+		try
+		{
+			// ファイルに保存
+			fStream.Write(aes, 0, aes.Length);
+
+		}
+		finally
+		{
+			// ファイルを閉じる
+			if (fStream != null)
+			{
+				fStream.Close();
+			}
+		}
+
+
 	}
 
 	void Load()
@@ -97,13 +101,25 @@ public class DataSave : MonoBehaviour {
 		//セーブデータクラスのインスタンス生成
 		SaveData save = new SaveData();
 
-		//セーブデータの読み込み
-		StreamReader stream = new StreamReader(FilePath);
-		string data = stream.ReadToEnd();
-		stream.Close();
-		
-		//セーブデータクラスに読み込んだ情報を代入
-		save = JsonUtility.FromJson<SaveData>(data);
+		if (!File.Exists(FilePath))
+		{
+			return;
+		}
+			//ファイルモードをオープンにする
+			FileStream fStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
+			try
+			{
+				// ファイル読み込み
+				byte[] bytes = File.ReadAllBytes(FilePath);
+
+				// 復号化
+				byte[] arrDecrypt = AesDecrypt(bytes);
+
+				// byte配列を文字列に変換
+				string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
+
+				// JSON形式の文字列をセーブデータのクラスに変換
+				save = JsonUtility.FromJson<SaveData>(decryptStr);
 
 		//セーブデータ内のムーン所持数を反映
 		short count = 0;
@@ -141,6 +157,54 @@ public class DataSave : MonoBehaviour {
 
 		}
 
+		}
+		finally
+		{
+			// ファイルを閉じる
+			if (fStream != null)
+			{
+				fStream.Close();
+			}
+		}
 
 	}
+
+	private AesManaged GetAesManager()
+	{
+		//任意の半角英数16文字
+		string aesIv = "1234567890123456";
+		string aesKey = "1234567890123456";
+
+		AesManaged aes = new AesManaged();
+		aes.KeySize = 128;
+		aes.BlockSize = 128;
+		aes.Mode = CipherMode.CBC;
+		aes.IV = Encoding.UTF8.GetBytes(aesIv);
+		aes.Key = Encoding.UTF8.GetBytes(aesKey);
+		aes.Padding = PaddingMode.PKCS7;
+		return aes;
+	}
+
+	// AES暗号化
+	public byte[] AesEncrypt(byte[] byteText)
+	{
+		// AESマネージャーの取得
+		AesManaged aes = GetAesManager();
+		// 暗号化
+		byte[] encryptText = aes.CreateEncryptor().TransformFinalBlock(byteText, 0, byteText.Length);
+
+		return encryptText;
+	}
+
+	// AES複合化
+	public byte[] AesDecrypt(byte[] byteText)
+	{
+		// AESマネージャー取得
+		var aes = GetAesManager();
+		// 復号化
+		byte[] decryptText = aes.CreateDecryptor().TransformFinalBlock(byteText, 0, byteText.Length);
+
+		return decryptText;
+	}
+
 }
