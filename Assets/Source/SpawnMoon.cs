@@ -5,9 +5,7 @@ using UnityEngine.UI;
 public class SpawnMoon : MonoBehaviour {
 	public GameObject MoonPrefab;
 	public Sprite[] MoonSprites;
-	public Text scorevalue_Noc;
-	public Text scorevalue_Gal;
-	public Text scorevalue_Obe;
+	public MoonManager moonmanager;
 
 	public void Create()
 	{
@@ -55,24 +53,7 @@ public class SpawnMoon : MonoBehaviour {
 
 	public void AddPoint (int point,int ID)
 	{
-		int value;
-		switch (ID) {
-		case 0:
-			value = int.Parse (scorevalue_Noc.text);
-			value = value + point;
-			scorevalue_Noc.text = value.ToString ();
-			break;
-		case 1:
-			value = int.Parse (scorevalue_Gal.text);
-			value = value + point;
-			scorevalue_Gal.text = value.ToString ();
-			break;
-		case 2:
-			value = int.Parse (scorevalue_Obe.text);
-			value = value + point;
-			scorevalue_Obe.text = value.ToString ();
-			break;
-		}
-
+		moonmanager.AddMoon(ID, (uint)point);
+		moonmanager.SetMoonText();
 	}
 }

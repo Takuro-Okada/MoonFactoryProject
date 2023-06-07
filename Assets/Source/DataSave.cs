@@ -10,11 +10,11 @@ using System.Security.Cryptography;
 [ExecuteInEditMode]
 public class DataSave : MonoBehaviour {
 
-	public Text[] SaveMoonValue;
-
 	public GameObject[] SaveBuyItem;
 
 	public AutoCreateMoon autoMoon;
+
+	public MoonManager moonmanager;
 
 	private string FilePath;
 
@@ -35,6 +35,7 @@ public class DataSave : MonoBehaviour {
 		if (!File.Exists(FilePath))
 		{
 			File.Create(FilePath);
+			Save();
 			return;
 		}
 
@@ -44,23 +45,21 @@ public class DataSave : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-		
-			Save();
+
 	}
 
 	void Update(){
 
 	}
 
-	void Save()
+	public void Save()
     {
 		SaveData save = new SaveData();
 
 		save.saveMoonValue = new List<string>();
-		foreach (Text val in SaveMoonValue)
+		foreach (ulong val in moonmanager.GetMoon())
         {
-			Debug.Log(val.text);
-			save.saveMoonValue.Add(val.text);
+			save.saveMoonValue.Add(val.ToString());
         }
 
 		save.saveBuyItem = new List<string>();
@@ -96,7 +95,7 @@ public class DataSave : MonoBehaviour {
 
 	}
 
-	void Load()
+	public void Load()
     {
 		//セーブデータクラスのインスタンス生成
 		SaveData save = new SaveData();
@@ -125,8 +124,7 @@ public class DataSave : MonoBehaviour {
 		short count = 0;
 		foreach(string val in save.saveMoonValue)
         {
-			SaveMoonValue[count].text = val;
-
+			moonmanager.AddMoon(count,ulong.Parse(val));
 			count++;
         }
 
@@ -150,10 +148,8 @@ public class DataSave : MonoBehaviour {
 
 		for (ulong i = 0; i < totalSeconds * (uint)autoMoon.Add_Value; i++)
 		{
-			int RareID = UnityEngine.Random.Range(0, SaveMoonValue.Length);
-			ulong moonVal = ulong.Parse(SaveMoonValue[RareID].text);
-			moonVal++;
-			SaveMoonValue[RareID].text = moonVal.ToString();
+			int RareID = UnityEngine.Random.Range(0, moonmanager.GetMoon().Length);
+				moonmanager.AddMoon(RareID, 1);
 
 		}
 
@@ -167,11 +163,13 @@ public class DataSave : MonoBehaviour {
 			}
 		}
 
+		moonmanager.SetMoonText();
+
 	}
 
 	private AesManaged GetAesManager()
 	{
-		//任意の半角英数16文字
+		//暗号キー
 		string aesIv = "1234567890123456";
 		string aesKey = "1234567890123456";
 
@@ -200,7 +198,7 @@ public class DataSave : MonoBehaviour {
 	public byte[] AesDecrypt(byte[] byteText)
 	{
 		// AESマネージャー取得
-		var aes = GetAesManager();
+		AesManaged aes = GetAesManager();
 		// 復号化
 		byte[] decryptText = aes.CreateDecryptor().TransformFinalBlock(byteText, 0, byteText.Length);
 

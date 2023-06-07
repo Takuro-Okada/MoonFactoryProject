@@ -288,6 +288,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 1caa0364e86b3d542b33fa46b0346b0b,
         type: 3}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: moonManager
+      value: 
+      objectReference: {fileID: 767848474}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
   m_IsPrefabAsset: 0
@@ -1132,6 +1136,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 325f7ce94529d8f4c922964903835d38,
         type: 3}
+    - target: {fileID: 11471462, guid: 353d96f33b6956642a709fff6f95d519, type: 2}
+      propertyPath: moonmanager
+      value: 
+      objectReference: {fileID: 767848474}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 353d96f33b6956642a709fff6f95d519, type: 2}
   m_IsPrefabAsset: 0
@@ -1271,6 +1279,10 @@ Prefab:
       propertyPath: PriceText_Obe
       value: 
       objectReference: {fileID: 575432089}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: moonManager
+      value: 
+      objectReference: {fileID: 767848474}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
   m_IsPrefabAsset: 0
@@ -1799,7 +1811,6 @@ GameObject:
   - component: {fileID: 564102378}
   - component: {fileID: 564102377}
   - component: {fileID: 564102375}
-  - component: {fileID: 564102376}
   m_Layer: 5
   m_Name: Value_Noc
   m_TagString: Untagged
@@ -1840,18 +1851,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 0
---- !u!114 &564102376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 564102374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 389241655c15f1d4198d9ad8f7fcdc72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KeyName: Noc
 --- !u!222 &564102377
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2434,9 +2433,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cce0c05dde6265749b89b4a6a554877d, type: 3}
   - {fileID: 21300000, guid: 325f7ce94529d8f4c922964903835d38, type: 3}
   - {fileID: 21300000, guid: 53ea58cc3a5d671458db58b076d3d209, type: 3}
-  scorevalue_Noc: {fileID: 564102375}
-  scorevalue_Gal: {fileID: 2024817617}
-  scorevalue_Obe: {fileID: 1340978938}
+  moonmanager: {fileID: 767848474}
 --- !u!4 &704072336
 Transform:
   m_ObjectHideFlags: 0
@@ -2650,8 +2647,9 @@ GameObject:
   m_Component:
   - component: {fileID: 767848473}
   - component: {fileID: 767848472}
+  - component: {fileID: 767848474}
   m_Layer: 0
-  m_Name: SaveObject
+  m_Name: DataObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2668,10 +2666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391d81ff149536749bf3c79d22760512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaveMoonValue:
-  - {fileID: 564102375}
-  - {fileID: 2024817617}
-  - {fileID: 1340978938}
   SaveBuyItem:
   - {fileID: 731974642}
   - {fileID: 1709901186}
@@ -2679,6 +2673,7 @@ MonoBehaviour:
   - {fileID: 2138240422}
   - {fileID: 2015805227}
   autoMoon: {fileID: 393275321}
+  moonmanager: {fileID: 767848474}
 --- !u!4 &767848473
 Transform:
   m_ObjectHideFlags: 0
@@ -2692,6 +2687,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &767848474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 767848471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e7a39a5fd5b4c4c9c49438dee0b30e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoonText:
+  - {fileID: 564102375}
+  - {fileID: 2024817617}
+  - {fileID: 1340978938}
+  dataSave: {fileID: 767848472}
 --- !u!1 &784660770
 GameObject:
   m_ObjectHideFlags: 0
@@ -3088,6 +3099,10 @@ Prefab:
       propertyPath: Price_Obe
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: moonManager
+      value: 
+      objectReference: {fileID: 767848474}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
   m_IsPrefabAsset: 0
@@ -4475,6 +4490,10 @@ Prefab:
       propertyPath: Price_Obe
       value: 3000
       objectReference: {fileID: 0}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: moonManager
+      value: 
+      objectReference: {fileID: 767848474}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
   m_IsPrefabAsset: 0
@@ -4991,7 +5010,6 @@ GameObject:
   - component: {fileID: 1340978936}
   - component: {fileID: 1340978939}
   - component: {fileID: 1340978938}
-  - component: {fileID: 1340978937}
   m_Layer: 5
   m_Name: Value_Obe
   m_TagString: Untagged
@@ -5017,18 +5035,6 @@ RectTransform:
   m_AnchoredPosition: {x: 57, y: -91}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1340978937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1340978935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 389241655c15f1d4198d9ad8f7fcdc72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KeyName: Obe
 --- !u!114 &1340978938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6328,6 +6334,10 @@ Prefab:
       propertyPath: Price_Obe
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: moonManager
+      value: 
+      objectReference: {fileID: 767848474}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
   m_IsPrefabAsset: 0
@@ -7172,6 +7182,10 @@ Prefab:
       propertyPath: Price_Obe
       value: 3000
       objectReference: {fileID: 0}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: moonManager
+      value: 
+      objectReference: {fileID: 767848474}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
   m_IsPrefabAsset: 0
@@ -7726,7 +7740,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6BCE\u79D2 : 0\u500B"
+  m_Text: 
 --- !u!222 &2019420441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7813,7 +7827,6 @@ GameObject:
   - component: {fileID: 2024817615}
   - component: {fileID: 2024817618}
   - component: {fileID: 2024817617}
-  - component: {fileID: 2024817616}
   m_Layer: 5
   m_Name: Value_Gal
   m_TagString: Untagged
@@ -7839,18 +7852,6 @@ RectTransform:
   m_AnchoredPosition: {x: 57, y: -95}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2024817616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2024817614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 389241655c15f1d4198d9ad8f7fcdc72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KeyName: Gal
 --- !u!114 &2024817617
 MonoBehaviour:
   m_ObjectHideFlags: 0
