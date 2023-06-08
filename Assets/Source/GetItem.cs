@@ -26,9 +26,21 @@ public class GetItem : MonoBehaviour {
 	private int Value;//買ってる個数
 
 	private bool BuyFlg;//買えるかフラグ
+
+	private int itemID;//自分が何番目の配列に入っているか
 	// Use this for initialization
 	void Start () {
-
+		int count = 0;
+		foreach(Text item in moonManager.ItemValueText)
+        {
+			if(item.Equals(this.GetComponentInChildren<Text>()))
+            {
+				itemID = count;
+				Debug.Log(string.Format("Hit! name={0} value={1}",item.name,count));
+				break;
+            }
+			count++;
+        }
 	}
 
 	// Update is called once per frame
@@ -81,10 +93,9 @@ public class GetItem : MonoBehaviour {
 		Price_Obe *= 2;
 		PriceText_Obe.text = Price_Obe.ToString();
 
-		int TextTmp = int.Parse (Item_Text.text);
-		if (Item_Text.text == string.Empty) TextTmp = 0;
-		TextTmp += 1;
-		Item_Text.text = TextTmp.ToString ();
+		moonManager.AddItem(itemID, 1);
+		moonManager.UpdateItemText();
+		moonManager.UpdateMoonText();
 	}
 
 

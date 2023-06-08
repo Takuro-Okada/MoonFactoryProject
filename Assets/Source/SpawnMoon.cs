@@ -54,6 +54,6 @@ public class SpawnMoon : MonoBehaviour {
 	public void AddPoint (int point,int ID)
 	{
 		moonmanager.AddMoon(ID, (uint)point);
-		moonmanager.SetMoonText();
+		moonmanager.UpdateMoonText();
 	}
 }

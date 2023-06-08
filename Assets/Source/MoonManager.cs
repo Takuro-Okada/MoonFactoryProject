@@ -5,14 +5,20 @@ using UnityEngine.UI;
 
 public class MoonManager : MonoBehaviour {
 
-	public const int useValue = 3;
+	public const int useMoonValue = 3;
 
-	public Text[] MoonText = new Text[useValue];
+	public Text[] MoonText = new Text[useMoonValue];
+
+	public const int useItemValue = 6;
+
+	public Text[] ItemValueText = new Text[useItemValue];
 
 	public DataSave dataSave;
 
-	private ulong[] useMoon = new ulong[useValue];
+	private ulong[] useMoon = new ulong[useMoonValue];
 
+
+	private int[] useItem = new int[useItemValue];
 
 	// Use this for initialization
 	void Start () {
@@ -29,12 +35,17 @@ public class MoonManager : MonoBehaviour {
 		dataSave.Save();
     }
 
-	public void SetMoonText()
-    {
-		for(int i=0;i<useValue;i++)
-        {
+
+
+	//==============
+	//ムーン関連
+	//==============
+	public void UpdateMoonText()
+	{
+		for (int i = 0; i < useMoonValue; i++)
+		{
 			MoonText[i].text = useMoon[i].ToString();
-        }
+		}
 	}
 
 	public ulong GetMoon(int id)
@@ -71,4 +82,33 @@ public class MoonManager : MonoBehaviour {
 		}
 
 	}
+
+
+	//=============
+	//アイテム関連
+	//=============
+
+	public void UpdateItemText()
+    {
+		for(int i=0;i<useItemValue;i++)
+        {
+			ItemValueText[i].text = useItem[i].ToString();
+        }
+    }
+
+	public void AddItem(int id,int add)
+    {
+		useItem[id] += add;
+    }
+
+	public void SubItem(int id,int sub)
+    {
+		useItem[id] -= sub;
+    }
+
+	public int[] GetItem()
+	{
+		return useItem;
+	}
+
 }

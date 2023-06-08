@@ -8,201 +8,203 @@ using System.Text;
 using System.Security.Cryptography;
 
 [ExecuteInEditMode]
-public class DataSave : MonoBehaviour {
+public class DataSave : MonoBehaviour
+{
 
-	public GameObject[] SaveBuyItem;
+    public AutoCreateMoon autoMoon;
 
-	public AutoCreateMoon autoMoon;
+    public MoonManager moonmanager;
 
-	public MoonManager moonmanager;
-
-	private string FilePath;
+    private string FilePath;
 
 
-	public class SaveData
-	{
-
-		public List<string> saveMoonValue;
-		public List<string> saveBuyItem;
-
-		public string saveTime;
-	}
-
-	void Start()
+    public class SaveData
     {
-		FilePath = Application.dataPath + "/" + "SaveData.json";
 
-		if (!File.Exists(FilePath))
-		{
-			File.Create(FilePath);
-			Save();
-			return;
-		}
+        public List<string> saveMoonValue;
+        public List<int> saveBuyItem;
 
-		Load();
+        public string saveTime;
+    }
 
-
-	}
-
-	void OnDestroy(){
-
-	}
-
-	void Update(){
-
-	}
-
-	public void Save()
+    void Start()
     {
-		SaveData save = new SaveData();
+        FilePath = Application.dataPath + "/" + "SaveData.json";
 
-		save.saveMoonValue = new List<string>();
-		foreach (ulong val in moonmanager.GetMoon())
+        if (!File.Exists(FilePath))
         {
-			save.saveMoonValue.Add(val.ToString());
+            File.Create(FilePath);
+            Save();
+            return;
         }
 
-		save.saveBuyItem = new List<string>();
-		foreach (var item in SaveBuyItem)
-        {
-			save.saveBuyItem.Add(item.GetComponent<Text>().text);
-        }
-
-		save.saveTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-
-		string json = JsonUtility.ToJson(save);
-
-		byte[] bytes = Encoding.UTF8.GetBytes(json);
-		byte[] aes = AesEncrypt(bytes);
-
-		FileStream fStream = new FileStream(FilePath, FileMode.Create, FileAccess.Write);
-
-		try
-		{
-			// ファイルに保存
-			fStream.Write(aes, 0, aes.Length);
-
-		}
-		finally
-		{
-			// ファイルを閉じる
-			if (fStream != null)
-			{
-				fStream.Close();
-			}
-		}
+        Load();
 
 
-	}
+    }
 
-	public void Load()
+    void OnDestroy()
     {
-		//セーブデータクラスのインスタンス生成
-		SaveData save = new SaveData();
 
-		if (!File.Exists(FilePath))
-		{
-			return;
-		}
-			//ファイルモードをオープンにする
-			FileStream fStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
-			try
-			{
-				// ファイル読み込み
-				byte[] bytes = File.ReadAllBytes(FilePath);
+    }
 
-				// 復号化
-				byte[] arrDecrypt = AesDecrypt(bytes);
+    void Update()
+    {
 
-				// byte配列を文字列に変換
-				string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
+    }
 
-				// JSON形式の文字列をセーブデータのクラスに変換
-				save = JsonUtility.FromJson<SaveData>(decryptStr);
+    public void Save()
+    {
+        SaveData save = new SaveData();
 
-		//セーブデータ内のムーン所持数を反映
-		short count = 0;
-		foreach(string val in save.saveMoonValue)
+        save.saveMoonValue = new List<string>();
+        foreach (ulong val in moonmanager.GetMoon())
         {
-			moonmanager.AddMoon(count,ulong.Parse(val));
-			count++;
+            save.saveMoonValue.Add(val.ToString());
         }
 
-		//セーブデータ内のアイテム購入数を反映
-		count = 0;
-		foreach(string item in save.saveBuyItem)
+        save.saveBuyItem = new List<int>();
+        foreach (var item in moonmanager.GetItem())
         {
-			SaveBuyItem[count].GetComponent<Text>().text = item;
-
-			int addValue = SaveBuyItem[count].GetComponentInParent<GetItem>().AddMoon * int.Parse(item);
-
-			autoMoon.AddValue(addValue);
-
-			count++;
+            save.saveBuyItem.Add(item);
         }
 
-		//前回の終了時間から現在時間までのムーン自動生成
-		DateTime loadTime = DateTime.Parse(save.saveTime);
-		TimeSpan timeSpan = DateTime.Now.Subtract(loadTime);
-		ulong totalSeconds = (ulong)timeSpan.TotalSeconds;
+        save.saveTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
-		for (ulong i = 0; i < totalSeconds * (uint)autoMoon.Add_Value; i++)
-		{
-			int RareID = UnityEngine.Random.Range(0, moonmanager.GetMoon().Length);
-				moonmanager.AddMoon(RareID, 1);
+        string json = JsonUtility.ToJson(save);
 
-		}
+        byte[] bytes = Encoding.UTF8.GetBytes(json);
+        byte[] aes = AesEncrypt(bytes);
 
-		}
-		finally
-		{
-			// ファイルを閉じる
-			if (fStream != null)
-			{
-				fStream.Close();
-			}
-		}
+        FileStream fStream = new FileStream(FilePath, FileMode.Create, FileAccess.Write);
 
-		moonmanager.SetMoonText();
+        try
+        {
+            // ファイルに保存
+            fStream.Write(aes, 0, aes.Length);
 
-	}
+        }
+        finally
+        {
+            // ファイルを閉じる
+            if (fStream != null)
+            {
+                fStream.Close();
+            }
+        }
 
-	private AesManaged GetAesManager()
-	{
-		//暗号キー
-		string aesIv = "1234567890123456";
-		string aesKey = "1234567890123456";
 
-		AesManaged aes = new AesManaged();
-		aes.KeySize = 128;
-		aes.BlockSize = 128;
-		aes.Mode = CipherMode.CBC;
-		aes.IV = Encoding.UTF8.GetBytes(aesIv);
-		aes.Key = Encoding.UTF8.GetBytes(aesKey);
-		aes.Padding = PaddingMode.PKCS7;
-		return aes;
-	}
+    }
 
-	// AES暗号化
-	public byte[] AesEncrypt(byte[] byteText)
-	{
-		// AESマネージャーの取得
-		AesManaged aes = GetAesManager();
-		// 暗号化
-		byte[] encryptText = aes.CreateEncryptor().TransformFinalBlock(byteText, 0, byteText.Length);
+    public void Load()
+    {
+        //セーブデータクラスのインスタンス生成
+        SaveData save = new SaveData();
 
-		return encryptText;
-	}
+        if (!File.Exists(FilePath))
+        {
+            return;
+        }
+        //ファイルモードをオープンにする
+        FileStream fStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
+        try
+        {
+            // ファイル読み込み
+            byte[] bytes = File.ReadAllBytes(FilePath);
 
-	// AES複合化
-	public byte[] AesDecrypt(byte[] byteText)
-	{
-		// AESマネージャー取得
-		AesManaged aes = GetAesManager();
-		// 復号化
-		byte[] decryptText = aes.CreateDecryptor().TransformFinalBlock(byteText, 0, byteText.Length);
+            // 復号化
+            byte[] arrDecrypt = AesDecrypt(bytes);
 
-		return decryptText;
-	}
+            // byte配列を文字列に変換
+            string decryptStr = Encoding.UTF8.GetString(arrDecrypt);
+
+            // JSON形式の文字列をセーブデータのクラスに変換
+            save = JsonUtility.FromJson<SaveData>(decryptStr);
+
+            //セーブデータ内のムーン所持数を反映
+            short count = 0;
+            foreach (string val in save.saveMoonValue)
+            {
+                moonmanager.AddMoon(count, ulong.Parse(val));
+                count++;
+            }
+
+            //セーブデータ内のアイテム購入数を反映
+            count = 0;
+            foreach (int item in save.saveBuyItem)
+            {
+                moonmanager.AddItem(count, item);
+
+                int addValue = moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().AddMoon * item;
+                autoMoon.AddValue(addValue);
+
+                count++;
+            }
+            moonmanager.UpdateItemText();
+
+
+            //前回の終了時間から現在時間までのムーン自動生成
+            DateTime loadTime = DateTime.Parse(save.saveTime);
+            TimeSpan timeSpan = DateTime.Now.Subtract(loadTime);
+            ulong totalSeconds = (ulong)timeSpan.TotalSeconds;
+
+            for (ulong i = 0; i < totalSeconds * (uint)autoMoon.Add_Value; i++)
+            {
+                int RareID = UnityEngine.Random.Range(0, moonmanager.GetMoon().Length);
+                moonmanager.AddMoon(RareID, 1);
+
+            }
+
+        }
+        finally
+        {
+            // ファイルを閉じる
+            if (fStream != null)
+            {
+                fStream.Close();
+            }
+        }
+
+        moonmanager.UpdateMoonText();
+
+    }
+
+    private AesManaged GetAesManager()
+    {
+        //暗号キー
+        string aesIv = "1234567890123456";
+        string aesKey = "1234567890123456";
+
+        AesManaged aes = new AesManaged();
+        aes.KeySize = 128;
+        aes.BlockSize = 128;
+        aes.Mode = CipherMode.CBC;
+        aes.IV = Encoding.UTF8.GetBytes(aesIv);
+        aes.Key = Encoding.UTF8.GetBytes(aesKey);
+        aes.Padding = PaddingMode.PKCS7;
+        return aes;
+    }
+
+    // AES暗号化
+    public byte[] AesEncrypt(byte[] byteText)
+    {
+        // AESマネージャーの取得
+        AesManaged aes = GetAesManager();
+        // 暗号化
+        byte[] encryptText = aes.CreateEncryptor().TransformFinalBlock(byteText, 0, byteText.Length);
+
+        return encryptText;
+    }
+
+    // AES複合化
+    public byte[] AesDecrypt(byte[] byteText)
+    {
+        // AESマネージャー取得
+        AesManaged aes = GetAesManager();
+        // 復号化
+        byte[] decryptText = aes.CreateDecryptor().TransformFinalBlock(byteText, 0, byteText.Length);
+
+        return decryptText;
+    }
 
 }

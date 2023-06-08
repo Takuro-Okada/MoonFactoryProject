@@ -1850,7 +1850,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 8
 --- !u!222 &564102377
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2666,12 +2666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391d81ff149536749bf3c79d22760512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaveBuyItem:
-  - {fileID: 731974642}
-  - {fileID: 1709901186}
-  - {fileID: 797788000}
-  - {fileID: 2138240422}
-  - {fileID: 2015805227}
   autoMoon: {fileID: 393275321}
   moonmanager: {fileID: 767848474}
 --- !u!4 &767848473
@@ -2702,6 +2696,13 @@ MonoBehaviour:
   - {fileID: 564102375}
   - {fileID: 2024817617}
   - {fileID: 1340978938}
+  ItemValueText:
+  - {fileID: 731974644}
+  - {fileID: 1709901188}
+  - {fileID: 797788002}
+  - {fileID: 2138240424}
+  - {fileID: 2015805229}
+  - {fileID: 539154541}
   dataSave: {fileID: 767848472}
 --- !u!1 &784660770
 GameObject:
@@ -5067,7 +5068,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 7
 --- !u!222 &1340978939
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7740,7 +7741,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\u6BCE\u79D2 : 0\u500B"
 --- !u!222 &2019420441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7884,7 +7885,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 10
 --- !u!222 &2024817618
 CanvasRenderer:
   m_ObjectHideFlags: 0
