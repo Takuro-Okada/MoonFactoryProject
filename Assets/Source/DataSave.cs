@@ -144,7 +144,7 @@ public class DataSave : MonoBehaviour
 
 
             //前回の終了時間から現在時間までのムーン自動生成
-            DateTime loadTime = DateTime.Parse(save.saveTime);
+            /*DateTime loadTime = DateTime.Parse(save.saveTime);
             TimeSpan timeSpan = DateTime.Now.Subtract(loadTime);
             ulong totalSeconds = (ulong)timeSpan.TotalSeconds;
 
@@ -153,7 +153,7 @@ public class DataSave : MonoBehaviour
                 int RareID = UnityEngine.Random.Range(0, moonmanager.GetMoon().Length);
                 moonmanager.AddMoon(RareID, 1);
 
-            }
+            }*/
 
         }
         finally
