@@ -33,7 +33,7 @@ public class DataSave : MonoBehaviour
 
         if (!File.Exists(FilePath))
         {
-            File.Create(FilePath);
+            //File.Create(FilePath);
             Save();
             return;
         }
@@ -133,10 +133,22 @@ public class DataSave : MonoBehaviour
             count = 0;
             foreach (int item in save.saveBuyItem)
             {
+                //所持アイテムを反映
                 moonmanager.AddItem(count, item);
 
+                //アイテムの自動生成数を反映
                 int addValue = moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().AddMoon * item;
                 autoMoon.AddValue(addValue);
+
+                for(int i=0;i<item;i++)
+                {
+                    moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().Price_Noc = moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().Price_Noc * 2;
+                    moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().Price_Gal = moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().Price_Gal * 2;
+                    moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().Price_Obe = moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().Price_Obe * 2;
+                }
+
+
+                moonmanager.ItemValueText[count].GetComponentInParent<GetItem>().UpdatePriceText();
 
                 count++;
             }

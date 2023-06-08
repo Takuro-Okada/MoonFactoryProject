@@ -81,23 +81,32 @@ public class GetItem : MonoBehaviour {
 		//ノクターンを必要分売り、価格を2倍にする
 		moonManager.SubMoon(_nocturne, Price_Noc);
 		Price_Noc *= 2;
-		PriceText_Noc.text = Price_Noc.ToString();
 
 		//ガリア―ドを必要分売り、価格を2倍にする
 		moonManager.SubMoon(_gariard, Price_Gal);
 		Price_Gal *= 2;
-		PriceText_Gal.text = Price_Gal.ToString();
 
 		//オベレクを必要分売り、価格を2倍にする
 		moonManager.SubMoon(_oberec, Price_Obe);
 		Price_Obe *= 2;
-		PriceText_Obe.text = Price_Obe.ToString();
 
+		//所持アイテム数を増加
 		moonManager.AddItem(itemID, 1);
+
+		//値段のテキストを更新
+		UpdatePriceText();
+
+		//所持ムーンと所持アイテムのテキストを更新
 		moonManager.UpdateItemText();
 		moonManager.UpdateMoonText();
 	}
 
+	public void UpdatePriceText()
+    {
+		PriceText_Noc.text = Price_Noc.ToString();
+		PriceText_Gal.text = Price_Gal.ToString();
+		PriceText_Obe.text = Price_Obe.ToString();
+	}
 
 }
 	
