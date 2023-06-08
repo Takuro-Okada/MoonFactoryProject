@@ -36,7 +36,6 @@ public class GetItem : MonoBehaviour {
 			if(item.Equals(this.GetComponentInChildren<Text>()))
             {
 				itemID = count;
-				Debug.Log(string.Format("Hit! name={0} value={1}",item.name,count));
 				break;
             }
 			count++;
@@ -50,7 +49,7 @@ public class GetItem : MonoBehaviour {
 		{
 			this.GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
 			BuyFlg = false;
-			this.GetComponent<Button>().enabled=false;
+			this.GetComponentInChildren<Button>().enabled=false;
 			return;
 
 		}
@@ -58,25 +57,27 @@ public class GetItem : MonoBehaviour {
 		{
 			this.GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
 			BuyFlg = false;
-			this.GetComponent<Button>().enabled=false;
+			this.GetComponentInChildren<Button>().enabled=false;
 			return;
 		}
 		if (Price_Obe > moonManager.GetMoon(_oberec))
 		{
 			this.GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-			this.GetComponent<Button>().enabled=false;
+			this.GetComponentInChildren<Button>().enabled=false;
 			BuyFlg = false;
 			return;
 		}
 
 		this.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.GetComponent<Button>().enabled=true;
+		this.GetComponentInChildren<Button>().enabled=true;
 		BuyFlg = true;
 
 	}
 
 	public void onClick()
 	{
+		if (BuyFlg == false) return;
+
 		AutoCreatePrefab.GetComponent<AutoCreateMoon> ().AddValue (AddMoon);
 		//ノクターンを必要分売り、価格を2倍にする
 		moonManager.SubMoon(_nocturne, Price_Noc);

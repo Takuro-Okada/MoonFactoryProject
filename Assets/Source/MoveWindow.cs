@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class MoveWindow : MonoBehaviour {
+	public float MaxMove;
+	public float MinMove;
+
 	private bool SlideFlg;
 	private Vector2 DefPos;
 
@@ -21,7 +24,7 @@ public class MoveWindow : MonoBehaviour {
 		Vector2 vec = transform.position;
 		if (SlideFlg == true) 
 		{
-			if (DefPos.x - transform.position.x < 400.0f) 
+			if (DefPos.x - transform.position.x < MaxMove) 
 			{
 				vec.x -= 10;
 				transform.position = vec;
@@ -29,7 +32,7 @@ public class MoveWindow : MonoBehaviour {
 		}
 		if (SlideFlg == false) 
 		{
-			if (DefPos.x - transform.position.x > 0) 
+			if (DefPos.x - transform.position.x > MinMove) 
 			{
 				vec.x += 10;
 				transform.position = vec;
