@@ -24,13 +24,12 @@ public class Title_OnClick : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {
 			if (ClickStart.GetComponent<FlashingFont> ().UpdateFlg == false) 
 			{
-				Font_Moon.GetComponent<EmergeFont> ().SetPositionY(3.653492f);
 				Font_Moon.GetComponent<EmergeFont> ().UpdateFlg=false;
-				Font_Factory.GetComponent<EmergeFont> ().SetPositionY(1.199999f);
 				Font_Factory.GetComponent<EmergeFont> ().UpdateFlg=false;
 				RotMoon.GetComponent<RotateMoon> ().EnddelayFlg = true;
 				ClickStart.GetComponent<FlashingFont> ().UpdateFlg = true;
 				OneClickFlg = true;
+
 				return;
 			}
 
@@ -39,14 +38,10 @@ public class Title_OnClick : MonoBehaviour {
 				ClickStart.GetComponent<FlashingFont> ().VisibleFlg = true;
 
 				FadeSprite.GetComponent<FadeScript> ().FadeInFlg = true;
+
+				this.GetComponent<AudioSource>().Play();
 			}
 
-		}
-
-		//セーブデータ削除処理
-		if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.RightShift)) 
-		{
-			PlayerPrefs.DeleteAll ();
 		}
 
 	}

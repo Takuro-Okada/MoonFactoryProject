@@ -292,6 +292,18 @@ Prefab:
       propertyPath: moonManager
       value: 
       objectReference: {fileID: 767848474}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: Price_Gal
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: Price_Obe
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
+      propertyPath: Price_Noc
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
   m_IsPrefabAsset: 0
@@ -4812,7 +4824,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4fe9e617e53e93c438a90e8baba16ac1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f6d180da976a7fd4fbe843a84568b66c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

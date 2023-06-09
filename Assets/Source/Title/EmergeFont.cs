@@ -48,9 +48,9 @@ public class EmergeFont : MonoBehaviour {
 			var color = spRenderer.color;
 			color.a = alpha;
 			spRenderer.color = color;
-			Vector3 vec = transform.position;
+			/*Vector3 vec = transform.position;
 			vec.y += 0.01f;
-			transform.position = vec;
+			transform.position = vec;*/
 
 		}
 		if (EnddelayFlg == false) 
