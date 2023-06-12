@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class MoveWindow : MonoBehaviour {
-	public float MaxMove;
-	public float MinMove;
+	private float MaxMove = 0;
+	private float MinMove = 0;
 
 	private bool SlideFlg;
 	private Vector2 DefPos;
@@ -17,6 +17,8 @@ public class MoveWindow : MonoBehaviour {
 	void Start () {
 		SlideFlg = false;
 		DefPos = transform.position;
+
+		MaxMove = Screen.width / 3.75f;
 	}
 	
 	// Update is called once per frame

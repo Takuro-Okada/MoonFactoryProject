@@ -3341,10 +3341,10 @@ RectTransform:
   m_Father: {fileID: 1384072621}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 367, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 640, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910867031
 MonoBehaviour:
@@ -3391,7 +3391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943049b957341e2439e4e42d9d7be752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxMove: 400
+  MaxMove: 460
   MinMove: 0
 --- !u!114 &910867034
 MonoBehaviour:
@@ -7755,7 +7755,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\u6BCE\u79D2 : 0\u500B"
 --- !u!222 &2019420441
 CanvasRenderer:
   m_ObjectHideFlags: 0
