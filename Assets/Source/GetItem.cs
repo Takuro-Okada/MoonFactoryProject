@@ -33,13 +33,17 @@ public class GetItem : MonoBehaviour {
 		int count = 0;
 		foreach(Text item in moonManager.ItemValueText)
         {
-			if(item.Equals(this.GetComponentInChildren<Text>()))
+			foreach(Text anyText in this.GetComponentsInChildren<Text>())
             {
-				itemID = count;
-				break;
-            }
+				if (item.Equals(anyText))
+				{
+					itemID = count;
+					break;
+				}
+			}
 			count++;
-        }
+
+		}
 	}
 
 	// Update is called once per frame

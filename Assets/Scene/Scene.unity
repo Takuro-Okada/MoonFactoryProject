@@ -653,7 +653,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10000
+  m_Text: 12000
 --- !u!222 &146583096
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1241,15 +1241,15 @@ Prefab:
         type: 3}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Noc
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Gal
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Obe
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Score_Noc
@@ -1434,7 +1434,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 800
+  m_Text: 1000
 --- !u!222 &334088300
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1735,7 +1735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 6.999939}
+  m_AnchoredPosition: {x: 580, y: 6.999939}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539154541
@@ -2113,7 +2113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 100
 --- !u!222 &575432090
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2223,7 +2223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 200
+  m_Text: 300
 --- !u!222 &639569698
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2333,7 +2333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 200
+  m_Text: 300
 --- !u!222 &660722995
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2492,7 +2492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 6.999939}
+  m_AnchoredPosition: {x: 580, y: 6.999939}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &731974644
@@ -2783,7 +2783,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 6.999939}
+  m_AnchoredPosition: {x: 580, y: 6.999939}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797788002
@@ -3102,15 +3102,15 @@ Prefab:
         type: 3}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Noc
-      value: 800
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Gal
-      value: 800
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Obe
-      value: 800
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: moonManager
@@ -3391,7 +3391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943049b957341e2439e4e42d9d7be752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxMove: 350
+  MaxMove: 400
   MinMove: 0
 --- !u!114 &910867034
 MonoBehaviour:
@@ -3652,7 +3652,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 800
+  m_Text: 1000
 --- !u!222 &966272356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4114,7 +4114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3000
+  m_Text: 5000
 --- !u!222 &1078597966
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4333,7 +4333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10000
+  m_Text: 12000
 --- !u!222 &1183676470
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4495,15 +4495,15 @@ Prefab:
         type: 3}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Noc
-      value: 3000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Gal
-      value: 3000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Obe
-      value: 3000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: moonManager
@@ -5257,7 +5257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 100
 --- !u!222 &1391662105
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6067,7 +6067,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 800
+  m_Text: 1000
 --- !u!222 &1514968688
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6142,7 +6142,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 200
+  m_Text: 300
 --- !u!222 &1519735963
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6339,15 +6339,15 @@ Prefab:
         type: 3}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Noc
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Gal
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Obe
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: moonManager
@@ -6555,7 +6555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 6.1}
+  m_AnchoredPosition: {x: 580, y: 6.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1709901188
@@ -6879,7 +6879,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3000
+  m_Text: 5000
 --- !u!222 &1775208587
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6954,7 +6954,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 100
 --- !u!222 &1841613287
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7187,15 +7187,15 @@ Prefab:
         type: 3}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Noc
-      value: 10000
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Gal
-      value: 10000
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: Price_Obe
-      value: 10000
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 11459486, guid: f87ae52e1be0037438aa4a285027df34, type: 2}
       propertyPath: moonManager
@@ -7271,7 +7271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3000
+  m_Text: 5000
 --- !u!222 &1962400038
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7346,7 +7346,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10000
+  m_Text: 12000
 --- !u!222 &2009551265
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7461,7 +7461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 6.999939}
+  m_AnchoredPosition: {x: 580, y: 6.999939}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2015805229
@@ -8083,7 +8083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 6.999939}
+  m_AnchoredPosition: {x: 580, y: 6.999939}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2138240424
